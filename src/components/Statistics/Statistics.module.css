@@ -1,0 +1,8 @@
+.stats {
+  font-size: 25px;
+  list-style: none;
+  padding: 0;
+}
+.stats :not(:last-child) {
+  margin-bottom: 20px;
+}
