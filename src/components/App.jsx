@@ -2,15 +2,21 @@ import { Section, FeedbackOptions, Statistics, Notification } from './';
 import React, { Component } from 'react';
 
 export class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-    total: 0,
-    positivePercentage: 0,
-  };
+  constructor(props) {
+    super(props);
+    // Don't call this.setState() here!
+    this.state = {
+      good: 0,
+      neutral: 0,
+      bad: 0,
+      total: 0,
+      positivePercentage: 0,
+    };
+    this.onLeaveFeedback = this.onLeaveFeedback.bind(this);
+  }
 
-  onLeaveFeedback = ({ target: { name } }) => {
+  onLeaveFeedback = function ({ target: { name } }) {
+    console.log(this);
     const newState = { ...this.state };
     newState[name] += 1;
     newState.total = this.countTotalFeedback(newState);
